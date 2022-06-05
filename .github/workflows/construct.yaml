@@ -25,7 +25,7 @@ jobs:
       env:
         COMMAND_IAC: terraform
       run: |
-        cd estudo_domingo/INFRA
+        cd INFRA
         $COMMAND_IAC init
         $COMMAND_IAC validate
         $COMMAND_IAC plan
