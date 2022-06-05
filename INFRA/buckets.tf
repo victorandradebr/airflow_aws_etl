@@ -17,6 +17,10 @@ resource "aws_s3_object" "object_1" {
   force_destroy = true
 
   etag = filemd5("../DADOS/CLIENTES.csv")
+
+  depends_on = [
+    aws_s3_bucket.landing
+  ]
 }
 
 
@@ -27,6 +31,10 @@ resource "aws_s3_object" "object_2" {
   force_destroy = true
 
   etag = filemd5("../DADOS/CLIENTES.csv")
+
+  depends_on = [
+    aws_s3_bucket.landing
+  ]  
 }
 
 
@@ -73,6 +81,10 @@ resource "aws_s3_object" "object_3" {
   force_destroy = true
 
   etag = filemd5("../EMR_CODES/landing_to_processing.py")
+
+  depends_on = [
+    aws_s3_bucket.emr-codes
+  ]  
 }
 
 
@@ -83,6 +95,10 @@ resource "aws_s3_object" "object_4" {
   force_destroy = true
 
   etag = filemd5("../EMR_CODES/processing_to_curated.py")
+
+  depends_on = [
+    aws_s3_bucket.emr-codes
+  ]    
 }
 
 #############################################################################################################################################################
