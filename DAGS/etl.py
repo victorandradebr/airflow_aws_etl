@@ -1,7 +1,6 @@
 from emr_config import EMR_CONFIG
 
 from airflow import DAG
-from airflow.models import Variable
 from airflow.utils.dates import days_ago
 
 from airflow.operators.dummy import DummyOperator
@@ -13,7 +12,6 @@ from airflow.providers.amazon.aws.sensors.emr_step import EmrStepSensor # Observ
 from airflow.contrib.operators.emr_terminate_job_flow_operator import EmrTerminateJobFlowOperator # Desliga o cluster
 
 from airflow.providers.amazon.aws.operators.glue_crawler import GlueCrawlerOperator # para rodar o glue crawler
-from airflow.providers.amazon.aws.sensors.glue_crawler import GlueCrawlerSensor # Observa e só avança se o status for sucesso
 
 from airflow.providers.amazon.aws.operators.athena import AthenaOperator
 
@@ -183,7 +181,9 @@ with DAG(
         aws_conn_id='aws'
     )
     
-############################################################ DEFINIÇÃO DE SEQUÊNCIA DAS TASKS DA DAG ################################################################
+
+
+############################################################### DEFINIÇÃO DE SEQUÊNCIA DAS TASKS DA DAG ################################################################
 
     (
         create_emr_cluster >> emr_create_sensor >>
