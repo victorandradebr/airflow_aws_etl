@@ -29,3 +29,5 @@ jobs:
         $COMMAND_IAC init
         $COMMAND_IAC validate
         $COMMAND_IAC plan
+  
+# test
